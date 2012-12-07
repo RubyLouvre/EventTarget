@@ -1,11 +1,10 @@
-define("events", function(){
+define("events",["$class"], function( $ ){
     //与node.js events模块同名，返回EventTarget类
-    var EventTarget = function(target) {
-        this._listeners = {};
-        this._eventTarget = target || this;
-    }
-    EventTarget.prototype = {
-        constructor: EventTarget,
+    return  $.factory({
+        init:  function(target) {
+            this._listeners = {};
+            this._eventTarget = target || this;
+        },
         addEventListener: function(type, callback, scope, priority) {
             if(isFinite( scope )){
                 priority = scope
@@ -58,7 +57,6 @@ define("events", function(){
                 }
             }
         }
-    }
-    return EventTarget;
+    })
 }) 
 
