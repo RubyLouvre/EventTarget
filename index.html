@@ -1,0 +1,37 @@
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>EventTarget by 司徒正美</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <script src="mass_merge.js">  </script>
+        <script>
+            require("events, mass", function(EventTarget, $){
+                var a = new EventTarget;
+                a.addEventListener("click", function(e){
+                    $.log(e)
+                })
+                a.addEventListener("click", function(e){
+                    $.log("高优先级")
+                }, 2)
+                a.addEventListener("click", function(e){
+                    $.log("这是第三个回调")
+                });
+                a.addEventListener("click", function(e, a, b, c){
+                    $.log(a )
+                    $.log(b )
+                    $.log(c )
+                });
+                a.dispatchEvent("click",1,2,3)
+            })
+        </script>
+        <style>
+          
+
+        </style>
+    </head>
+    <body>
+       <h1>请在控制台下查看打印日志</h1>
+
+    </body>
+</html>
